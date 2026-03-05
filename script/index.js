@@ -16,6 +16,14 @@ const loadLessons = () => {
 }
 
 
+// Remove all Btn Colors Selected one Just:
+const removeActive = () =>{
+    const lessonButtons = document.querySelectorAll(".lesson-btn");
+    // console.log(lessonButtons);
+    lessonButtons.forEach(btn => btn.classList.remove("active"));
+    
+}
+
 // Load Btn Words:
 
 const loadLevelWord = (id) => {
@@ -26,11 +34,23 @@ const loadLevelWord = (id) => {
 
     fetch(url)
         .then((res) => res.json())
-        .then((data) => displayLelelWord(data.data));
+        // .then((data) => displayLevelWord(data.data));
+        .then((data) => {
+
+            // After Clicking Btn: Change it's Color:
+            removeActive(); // Remove all active class:
+
+            const clickBtn = document.getElementById(`lesson-btn-${id}`)
+            // console.log(clickBtn);
+
+            clickBtn.classList.add("active"); // Selected one add active class:
+            
+            displayLevelWord(data.data)
+        });
 
 }
 
-const displayLelelWord = (words) => {
+const displayLevelWord = (words) => {
     // console.log(words);
 
     const wordContainer = document.getElementById("word-container"); // 1:
@@ -42,7 +62,7 @@ const displayLelelWord = (words) => {
         <div class="text-center col-span-full rounded-xl py-10 space-y-6 bg-red-200">
             <img class="mx-auto" src="./assets/alert-error.png" alt="">
             <p class="font-bangla text-xl font-semibold text-gray-400 ">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-            <h2 class="font-bangla font-bold text-3xl">নেক্সট Lesson এ যান।</h2>
+            <h2 class="font-bangla font-bold text-3xl">অন্য Lesson এ যান।</h2>
         </div>
 
         `;
@@ -94,7 +114,7 @@ const displayLesson = (lessons) => {
 
         const btnDiv = document.createElement("div"); // 3:
         btnDiv.innerHTML = `
-            <button onclick="loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary">
+            <button id="lesson-btn-${lesson.level_no}" onclick="loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary lesson-btn">
             <i class="fa-solid fa-book-open">
             </i> Lesson - ${lesson.level_no} </button>
         `;
