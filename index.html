@@ -118,7 +118,7 @@
                     <label class="label">Password</label>
                     <input type="password" class="input" placeholder="Password" />
 
-                    <button class="btn btn-primary w-[150px]">Get Started</button>
+                    <button class="btn btn-primary w-[150px] mt-2">Get Started</button>
                 </fieldset>
             </div>
 
@@ -132,13 +132,15 @@
 
     <!-- Vocabularies Section: -->
     <section>
-        <h2 class="text-4xl font-bold mb-5 text-center my-10"> <span class="text-sky-500">Let's</span> Learn Vocabularies </h2>
+        <h2 class="text-4xl font-bold mb-5 text-center my-10"> <span class="text-sky-500">Let's</span> Learn
+            Vocabularies </h2>
 
         <div id="level-container" class="flex gap-5 flex-wrap justify-center"></div>
     </section>
 
     <!-- Vocab Btn Selection Section: -->
-    <section id="word-container" class="vocab-tn-seclection bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-3 gap-5 rounded">
+    <section id="word-container"
+        class="vocab-tn-seclection bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-3 gap-5 rounded">
 
         <!-- By Default Shwo Card: -->
         <div class="text-center col-span-full rounded-xl py-10 space-y-6 bg-blue-300">
@@ -146,6 +148,30 @@
             <h2 class="font-bangla font-bold text-3xl">একটি Lesson Select করুন।</h2>
         </div>
 
+    </section>
+
+    <!-- Card Details Section: -->
+    <section>
+        <!-- Card Details Icon Btn ant it are same: -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+        <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+
+            <div class="modal-box">
+
+                <div id="details-container" class="space-y-5">
+                    
+                </div>
+                    
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </dialog>
     </section>
 
 

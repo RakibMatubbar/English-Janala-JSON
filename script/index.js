@@ -1,11 +1,23 @@
 /*
-<== Process of Dynamic Data Store==>
-
-1. Get the Container & Empty it:
-2. Get into Every Lessons:
-3. Create Element:
-4. Append into Container:
+<== Process of Load and Display ==>
+    1: Load Func.
+    2: Display Func.
+//my_modal_5.showModal()
+<== Process of Dynamic Data Store ==>
+    1. Get the Container & Empty it:
+    2. Get into Every Lessons:
+    3. Create Element:
+    4. Append into Container:
 */
+
+// Create Elemetes | Array to String | for Synonyms:
+const createElements = (arr) => {
+    const htmlElements = arr.map(el => `<span class="btn">${el}</span>`);
+    // console.log(htmlElements);
+    // console.log(htmlElements.join(" "));
+    
+    return htmlElements.join(" ");
+};
 
 // load Btn-Number:
 const loadLessons = () => {
@@ -25,7 +37,6 @@ const removeActive = () =>{
 }
 
 // Load Btn Words:
-
 const loadLevelWord = (id) => {
     // console.log(id);
 
@@ -50,6 +61,48 @@ const loadLevelWord = (id) => {
 
 }
 
+// Load Card Word Details: Avoit .then .then : async
+const loadWordDetails = async(id) => {
+    const url = `https://openapi.programming-hero.com/api/word/${id}`;
+    // console.log(url);
+
+    const res = await fetch(url);
+    const details = await res.json();
+    // console.log(details);
+    displayWordDetails(details.data);
+}
+
+// Display Word Details:
+const displayWordDetails = (word) => {
+    // console.log(word);
+
+    const detailsBox = document.getElementById("details-container");
+    // console.log(detailsBox);
+
+    detailsBox.innerHTML = `
+        <div>
+            <h2 class="text-2xl font-bold">${word.word} (<i class="fa-solid fa-microphone-lines"></i> : ${word.pronunciation})</h2>
+        </div>
+
+        <div>
+            <h2 class="font-bold">Meaning:</h2>
+            <p>${word.meaning ? word.meaning : ":::"}</p>
+        </div>
+        <div>
+            <h2 class="font-bold">Example:</h2>
+            <p>${word.sentence ? word.sentence : ":::"}</p>
+        </div>
+        <div>
+            <h2 class="font-bold">Synonyms:</h2>
+            <div class="">${createElements(word.synonyms) ? word.synonyms : ":::"}</div>
+        </div>
+    `;
+
+    // Call daisyUI's function:
+    document.getElementById("word_modal").showModal();
+}
+
+// Display Specific Btn's Word:
 const displayLevelWord = (words) => {
     // console.log(words);
 
@@ -76,7 +129,7 @@ const displayLevelWord = (words) => {
 
         const card = document.createElement("div"); // 3:
         card.innerHTML = `
-        <div class="bg-white rounded-xl shadow-sm text-center py-10 px-5 space-y-4">
+        <div class="bg-white rounded-xl shadow-sm text-center py-10 px-5 space-y-4 hover:bg-red-200">
 
             <h2 class="font-bold text-2xl">${word.word
                 ? word.word
@@ -86,10 +139,10 @@ const displayLevelWord = (words) => {
             <p class="font-semibold">Meaning | Pronounciation</p>
             
             <div class="font-bangla text-2xl font-medium">${word.meaning ? word.meaning : ":::"} | ${word.pronunciation ? word.pronunciation : ":::"} </div>
-            
 
             <div class="flex justify-between items-center">
-                <button class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80] "> <i class="fa-solid fa-circle-info"></i> </button>
+                <button onclick="loadWordDetails(${word.id})" class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80] "> <i class="fa-solid fa-circle-info"></i> </button>
+
                 <button class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]"> <i class="fa-solid fa-volume-high"></i> </button>
             </div>
 
@@ -102,7 +155,6 @@ const displayLevelWord = (words) => {
 
 
 // loadLevelWord();
-
 const displayLesson = (lessons) => {
     // console.log(lessons);
 
@@ -123,6 +175,7 @@ const displayLesson = (lessons) => {
     };
 
 };
+
 loadLessons();
 
 
