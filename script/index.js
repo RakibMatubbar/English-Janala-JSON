@@ -20,6 +20,13 @@ const createElements = (arr) => {
 };
 
 
+// Speak Word Func: Have to Understand:
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 // Loading Data Graphics daisyUI:
 const maanageSpinner = (status) => {
     if(status == true){
@@ -152,6 +159,7 @@ const displayLevelWord = (words) => {
 
     words.forEach(word => { // 2:
         // console.log(word);
+        // ('${word.word}') // Bujhte Hobe:
 
         const card = document.createElement("div"); // 3:
         card.innerHTML = `
@@ -171,7 +179,7 @@ const displayLevelWord = (words) => {
 
                 <button onclick="markAsDone(this)" class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]"> <i class="fa-regular fa-calendar-check"></i> </button>
 
-                <button class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]"> <i class="fa-solid fa-volume-high"></i> </button>
+                <button onclick="pronounceWord('${word.word}')" class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]"> <i class="fa-solid fa-volume-high"></i> </button>
             </div>
 
         </div>
