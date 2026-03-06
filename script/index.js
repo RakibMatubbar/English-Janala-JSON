@@ -247,5 +247,19 @@ document.getElementById("input-search").addEventListener("keyup", (event) => {
 
 
 // Tik Mark:
+const markAsDone = (btnElement) => {
+    // console.log("Word Marked");
+
+    const card = btnElement.closest(".bg-white") || btnElement.parentElement.parentElement;
+
+    card.classList.remove("bg-white", "hover:bg-red-200");
+    card.classList.add("bg-green-200");
+
+    const allButtons = card.querySelectorAll(".btn");
+    allButtons.forEach(btn =>{
+        btn.classList.remove("bg-[#1A91FF20]", "hover:bg-[#1A91FF80]");
+        btn.classList.add("bg-white", "text-green-700", "border-none")
+    });
+};
 
 
