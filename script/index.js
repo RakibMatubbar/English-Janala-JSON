@@ -1,9 +1,9 @@
 /*
-<== Process of Load and Display ==>
+<= Process of Load and Display: =>
     1: Load Func.
     2: Display Func.
-//my_modal_5.showModal()
-<== Process of Dynamic Data Store ==>
+
+<= Process of Dynamic Data Store: =>
     1. Get the Container & Empty it:
     2. Get into Every Lessons:
     3. Create Element:
@@ -18,6 +18,20 @@ const createElements = (arr) => {
     
     return htmlElements.join(" ");
 };
+
+
+// Loading Data Graphics daisyUI:
+const maanageSpinner = (status) => {
+    if(status == true){
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("word-container").classList.add("hidden");
+    }else{
+        document.getElementById("word-container").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+}
+
+//<=====================================>//
 
 // load Btn-Number:
 const loadLessons = () => {
@@ -36,9 +50,13 @@ const removeActive = () =>{
     
 }
 
+
 // Load Btn Words:
 const loadLevelWord = (id) => {
     // console.log(id);
+
+    // call the func for ture and show Loading:
+    maanageSpinner(true);
 
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
     // console.log(url);
@@ -61,7 +79,8 @@ const loadLevelWord = (id) => {
 
 }
 
-// Load Card Word Details: Avoit .then .then : async
+
+// Load Card Word Details: Avoid .then .then : async
 const loadWordDetails = async(id) => {
     const url = `https://openapi.programming-hero.com/api/word/${id}`;
     // console.log(url);
@@ -72,12 +91,14 @@ const loadWordDetails = async(id) => {
     displayWordDetails(details.data);
 }
 
+
 // Display Word Details:
 const displayWordDetails = (word) => {
     // console.log(word);
 
     const detailsBox = document.getElementById("details-container");
     // console.log(detailsBox);
+    // ${createElements(word.synonyms) ? word.synonyms : ":::"}
 
     detailsBox.innerHTML = `
         <div>
@@ -94,13 +115,14 @@ const displayWordDetails = (word) => {
         </div>
         <div>
             <h2 class="font-bold">Synonyms:</h2>
-            <div class="">${createElements(word.synonyms) ? word.synonyms : ":::"}</div>
+            <div class="flex flex-wrap gap-2">${word.synonyms && word.synonyms.length > 0 ? createElements(word.synonyms) : ":::"}</div>
         </div>
     `;
 
     // Call daisyUI's function:
     document.getElementById("word_modal").showModal();
 }
+
 
 // Display Specific Btn's Word:
 const displayLevelWord = (words) => {
@@ -119,6 +141,10 @@ const displayLevelWord = (words) => {
         </div>
 
         `;
+
+        // Call the Spinner:
+        maanageSpinner(false);
+
         return;
     }
 
@@ -151,6 +177,9 @@ const displayLevelWord = (words) => {
 
         wordContainer.append(card); // 4:
     });
+
+    // Call the func after DisplyData.
+    maanageSpinner(false);
 };
 
 
@@ -179,4 +208,4 @@ const displayLesson = (lessons) => {
 loadLessons();
 
 
-// Get Vocab after Clicking Btn:
+
