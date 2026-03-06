@@ -263,6 +263,4 @@ const markAsDone = (btnElement) => {
 };
 
 
-// FAQ Answer:
 
-// Store All Ans:

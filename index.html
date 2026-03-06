@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon + Title -->
-    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/fav.svg" type="image/x-icon">
 
     <title>English Janala</title>
 
@@ -58,7 +58,7 @@
                         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
 
                         <li>
-                            <a href="faq.html" class=""> <i class="fa-solid fa-circle-question"></i>
+                            <a href="" class=""> <i class="fa-solid fa-circle-question"></i>
                                 FAQ</a>
                         </li>
                         <li>
@@ -75,8 +75,8 @@
 
                 <a href="" class="flex items-center gap-1">
                     <span class="text-lg font-bold">English</span>
-                    <img src="./assets/logo.png" alt="">
-                    <span class="font-bangla text-lg font-semibold">জানালা</span>
+                    <p><i class="fa-solid fa-book"></i></p>
+                    <span class="font-bangla text-lg font-semibold text-sky-500">জানালা</span>
                 </a>
 
             </div>
@@ -108,7 +108,7 @@
     <section
         class="banner-section flex flex-col-reverse md:flex-row gap-10 justify-between items-center py-5 w-11/12 mx-auto">
 
-        <div class="banner-content flex-1 text-center md:text-left">
+        <div class="banner-content p-4 flex-1 text-center md:text-left bg-gray-100 rounded-md">
             <h2 class="text-4xl font-bold mb-5"> <span class="text-sky-500">English</span> is Easy!! </h2>
 
             <p class="font-bangla">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে
@@ -129,29 +129,29 @@
         </div>
 
         <div class="banner-image flex-1">
-            <img src="./assets/hero-student.png" alt="">
+            <img src="./assets/slid.png" alt="" class="rounded-md">
         </div>
 
     </section>
 
     <!-- Vocabularies Section: -->
-    <section>
+    <section class="w-11/12 mx-auto rounded-md bg-gray-100 p-4">
         <h2 class="text-4xl font-bold mb-5 text-center my-10"> <span class="text-sky-500">Let's</span> Learn
             Vocabularies </h2>
 
-        <div id="level-container" class="flex gap-5 flex-wrap justify-center"></div>
-    </section>
-
-    <!-- Search web | daisyUI: -->
-    <section class="flex justify-center mt-8">
-        <div class="join">
-            <div>
-                <label class="input validator join-item">
-                    <input id="input-search" type="search" placeholder="Search Vocab" required />
-                </label>
+        <!-- Search web | daisyUI: -->
+        <div class="flex justify-center my-6">
+            <div class="join">
+                <div>
+                    <label class="input validator join-item">
+                        <input id="input-search" type="search" placeholder="Search Vocab" required />
+                    </label>
+                </div>
+                <button id="btn-search" class="btn btn-primary join-item">Search</button>
             </div>
-            <button id="btn-search" class="btn btn-primary join-item">Search</button>
         </div>
+
+        <div id="level-container" class="flex gap-5 flex-wrap justify-center"></div>
     </section>
 
     <!-- Loading daisyUI: -->
@@ -164,7 +164,7 @@
         class="vocab-tn-seclection bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 rounded">
 
         <!-- By Default Shwo Card: -->
-        <div class="text-center col-span-full rounded-xl py-10 px-2 space-y-6 bg-red-500">
+        <div class="text-center col-span-full rounded-xl py-10 px-2 space-y-6 bg-red-400">
             <p class="font-bangla text-xl font-semibold text-white">আপনি এখনো কোন Lesson Select করেন নি।</p>
             <h2 class="font-bangla font-bold text-3xl">একটি Lesson Select করুন।</h2>
         </div>
@@ -197,6 +197,9 @@
 
     <!-- FAQ Section: -->
     <section class="w-11/12 mx-auto">
+
+        <!-- FAQ JS + Icon Click করে আসবে। এটা ভালো ভাবে শিখতে হবে। -->
+
         <h2 class="text-3xl font-bold mb-5 text-center"> <span class="text-sky-500">Frequently</span> Asked Questions
             <span class="text-red-600">?</span>
         </h2>
@@ -237,6 +240,43 @@
         </div>
 
     </section>
+
+    <!-- Footer Section: -->
+    <footer class="bg-[#F3F4F6] rounded-md p-2 mt-10">
+
+        <!-- Copyright: -->
+        <div class="flex justify-evenly items-center gap-3 bg-[#F3F4F6] rounded-md">
+            <p class="flex justify-center items-center font-bold text-2xl text-sky-500">&copy Matubbar <span class="text-red-500">'s |</span> </p>
+
+            <img src="./assets/matubbar.jpg" alt="" class="w-20 rounded-lg">
+        </div>
+
+        <hr class="mb-1 text-white mt-1">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div class="space-y-3 bg-slate-200 p-2 rounded-md">
+                <a href="" class="flex items-center gap-1">
+                    <span class="text-lg font-bold text-sky-500">English</span>
+                    <p><i class="fa-solid fa-book"></i></p>
+                    <span class="font-bangla text-lg font-semibold">জানালা</span>
+                </a>
+                <p class="font-bangla rounded-md text-black font-bold">ইংরেজি শিখুন সহজে | <span>Rakib
+                        Matubbar</span></p>
+                <p class="font-bold">Providing ED-Tech Applications since 2025</p>
+            </div>
+
+            <div class="space-y-2 bg-slate-200 p-2 rounded-md flex flex-col justify-center">
+                <div class="flex justify-center items-center">
+                    <p class="font-bold text-xl">FOLLOW US:</p>
+                </div>
+                <div class="flex justify-center items-center gap-6 bg-gray-200 p-2 rounded-md">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Script JS Link: -->
     <script src="./script/index.js"></script>
