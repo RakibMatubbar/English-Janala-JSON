@@ -237,6 +237,14 @@ document.getElementById("btn-search").addEventListener("click", ()=>{
     
 });
 
+// Write word and Search by pressing Enter:
+document.getElementById("input-search").addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        document.getElementById("btn-search").click();
+    }
+});
+
+
 
 // Tik Mark:
 
