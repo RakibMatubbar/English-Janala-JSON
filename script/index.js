@@ -169,6 +169,8 @@ const displayLevelWord = (words) => {
             <div class="flex justify-between items-center">
                 <button onclick="loadWordDetails(${word.id})" class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80] "> <i class="fa-solid fa-circle-info"></i> </button>
 
+                <button onclick="markAsDone(this)" class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]"> <i class="fa-regular fa-calendar-check"></i> </button>
+
                 <button class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]"> <i class="fa-solid fa-volume-high"></i> </button>
             </div>
 
@@ -207,5 +209,35 @@ const displayLesson = (lessons) => {
 
 loadLessons();
 
+
+// Search Btn for searching Words:
+document.getElementById("btn-search").addEventListener("click", ()=>{
+
+    // Removo all Active class when Searching:
+    removeActive();
+
+    const input = document.getElementById("input-search");
+    // const searchValue = input.value;
+    const searchValue = input.value.trim().toLowerCase();
+    // console.log(searchValue);
+
+    // fetch all words:
+    fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    // .then((data) => console.log(data));
+    .then((data) => {
+        const allWords = data.data;
+        // console.log(allWords);
+
+        const filterWords = allWords.filter((word) => word.word.toLowerCase().includes(searchValue));
+        // console.log(filterWords);
+
+        displayLevelWord(filterWords);
+    });
+    
+});
+
+
+// Tik Mark:
 
 
